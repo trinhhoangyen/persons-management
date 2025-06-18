@@ -1,7 +1,6 @@
 services:
   - type: web
     name: persons-management-backend
-    env: java
     plan: free
     rootDir: back-end
     buildCommand: ./mvnw clean package
