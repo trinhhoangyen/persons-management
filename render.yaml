@@ -8,10 +8,3 @@ services:
     envVars:
       - key: PORT
         value: 8080
-
-  - type: static
-    name: persons-management-frontend
-    plan: free
-    rootDir: front-end
-    buildCommand: npm install && npm run build
-    staticPublishPath: build
