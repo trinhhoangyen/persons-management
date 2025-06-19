@@ -9,27 +9,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/persons")
 @RequiredArgsConstructor
 public class PersonController {
     private final PersonService personService;
 
-    @GetMapping(value = "/getAllPersons")
+    @GetMapping
     public List<Person> getAllPersons() {
         return personService.getAllPersons();
     }
 
-    @GetMapping(value = "/getPersonById/{id}")
+    @GetMapping(value = "/{id}")
     public Person getPersonById(@PathVariable String id) {
         return personService.getPerson(id);
     }
 
-    @PostMapping(value = "/createPerson")
+    @PostMapping
     public Person createPerson(@RequestBody CreatePersonRequest createPersonRequest){
         return personService.createPerson(createPersonRequest);
     }
 
-    @PutMapping(value = "/updatePerson/{id}")
+    @PutMapping(value = "/{id}")
     public Person updatePerson(@PathVariable String id , @RequestBody CreatePersonRequest createPersonRequest) {
         return personService.updatePerson(id, createPersonRequest);
     }
