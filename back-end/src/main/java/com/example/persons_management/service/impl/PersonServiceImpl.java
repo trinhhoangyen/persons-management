@@ -36,12 +36,27 @@ public class PersonServiceImpl implements PersonService {
     public Person updatePerson(String id, CreatePersonRequest createPersonRequest) {
         Person updatePerson = personRepository.findById(id)
                 .orElseThrow(() -> {
-                    return new RuntimeException("");
+                    return new RuntimeException("Not found any person with id " +  id);
                 });
 
         updatePerson.setName(createPersonRequest.getName());
         updatePerson.setGender(createPersonRequest.getGender());
 
         return personRepository.save(updatePerson);
+    }
+
+    @Override
+    public void deletePerson(String id) {
+        personRepository.deleteById(id);
+    }
+
+    @Override
+    public Person changeName(String id, String name) {
+        Person updatedPerson = personRepository.findById(id)
+                .orElseThrow(() -> {
+                    return new RuntimeException("Not found any person with id " + id);
+                });
+        updatedPerson.setName(name);
+        return personRepository.save(updatedPerson);
     }
 }

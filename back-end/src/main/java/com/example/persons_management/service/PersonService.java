@@ -9,7 +9,14 @@ import java.util.List;
 @Service
 public interface PersonService {
     Person getPerson(String id);
+
     List<Person> getAllPersons();
+
     Person createPerson(CreatePersonRequest createPersonRequest);
+
     Person updatePerson(String id, CreatePersonRequest createPersonRequest);
+
+    void deletePerson(String id);
+
+    Person changeName(String id, String name);
 }

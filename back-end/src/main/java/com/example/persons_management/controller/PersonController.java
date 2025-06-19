@@ -33,4 +33,14 @@ public class PersonController {
     public Person updatePerson(@PathVariable String id , @RequestBody CreatePersonRequest createPersonRequest) {
         return personService.updatePerson(id, createPersonRequest);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public void deletePerson(@PathVariable String id){
+        personService.deletePerson(id);
+    }
+
+    @PatchMapping(value = "/{id}/name/{name}")
+    public Person changeName(@PathVariable String id, @PathVariable String name){
+        return personService.changeName(id, name);
+    }
 }
