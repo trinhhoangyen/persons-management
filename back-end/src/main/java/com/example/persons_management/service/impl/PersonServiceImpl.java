@@ -26,9 +26,10 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person createPerson(CreatePersonRequest createPersonRequest) {
-        Person person = new Person();
-        person.setName(createPersonRequest.getName());
-        person.setGender(createPersonRequest.getGender());
+        Person person = Person.builder()
+                .name(createPersonRequest.getName())
+                .gender(createPersonRequest.getGender())
+                .build();
         return personRepository.save(person);
     }
 
